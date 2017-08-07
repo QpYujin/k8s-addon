@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluentd-logging
+  namespace: kube-system
+  labels:
+    k8s-app: fluentd-logging
+    version: v1
+    dns: route53
+  annotations:
+    domainName: "fluentd.deploybytes.com"
+spec:
+  type: LoadBalancer
+  ports:
+  - name: fluentd
+    port: 24224
+    targetPort: fluentd
+    protocol: TCP
+  selector:
+    k8s-app: fluentd-logging
+    version: v1
