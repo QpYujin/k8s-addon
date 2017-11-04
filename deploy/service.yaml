@@ -4,6 +4,8 @@ metadata:
   labels:
     application: kube-ops-view
   name: kube-ops-view
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: nginx.deploybytes.com.
 spec:
   selector:
     application: kube-ops-view
